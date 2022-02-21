@@ -1,6 +1,7 @@
-package com.fedebonel.springframeworkchucknorrisquotes.Controllers;
+package com.fedebonel.springframeworkchucknorrisquotes.controllers;
 
-import com.fedebonel.springframeworkchucknorrisquotes.Services.RandomChuckQuoteService;
+import com.fedebonel.springframeworkchucknorrisquotes.services.RandomChuckQuoteService;
+import com.fedebonel.springframeworkchucknorrisquotes.services.RandomChuckQuoteServiceImpl;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -14,14 +15,15 @@ public class RandomChuckQuoteController {
     private final RandomChuckQuoteService service;
 
     // Inject that service in runtime
-    public RandomChuckQuoteController(RandomChuckQuoteService service) {
+    public RandomChuckQuoteController(RandomChuckQuoteServiceImpl service) {
         this.service = service;
     }
 
     // Set the mapping to get the request and show what's needed in template
-    @RequestMapping("/")
+    @RequestMapping({"/",""}) // Maps to localhost:8080/ AKA Gets called when user does request to that endpoint
     public String getChuckQuote(Model model){
         model.addAttribute("joke", service.getRandomQuote());
+        // Return the view index.html in templates inflated with the joke on it
         return "index";
     }
 }

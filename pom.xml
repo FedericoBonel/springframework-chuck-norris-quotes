@@ -32,6 +32,7 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- Chuck Norris Joke Generator -->
 		<dependency>
 			<groupId>guru.springframework</groupId>
 			<artifactId>chuck-norris-for-actuator</artifactId>
